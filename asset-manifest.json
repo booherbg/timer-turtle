@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/timer-turtle/static/css/main.6c803613.css",
-    "main.js": "/timer-turtle/static/js/main.7953c6d4.js",
+    "main.js": "/timer-turtle/static/js/main.7f16128d.js",
     "index.html": "/timer-turtle/index.html",
     "main.6c803613.css.map": "/timer-turtle/static/css/main.6c803613.css.map",
-    "main.7953c6d4.js.map": "/timer-turtle/static/js/main.7953c6d4.js.map"
+    "main.7f16128d.js.map": "/timer-turtle/static/js/main.7f16128d.js.map"
   },
   "entrypoints": [
     "static/css/main.6c803613.css",
-    "static/js/main.7953c6d4.js"
+    "static/js/main.7f16128d.js"
   ]
 }
