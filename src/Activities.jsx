@@ -2,6 +2,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
+import { Alert } from 'react-bootstrap';
 
 export default function Activities({ activities, setRunning, running, resetActivities }) {
    const [relative, setRelative] = useState(true);
@@ -24,7 +25,8 @@ export default function Activities({ activities, setRunning, running, resetActiv
             </div>
          </div>
 
-         <section className='mb-5'>
+         <section>
+            {activities.length === 0 && <Alert variant="info">Please add some activities above.</Alert>}
             {activities.map((a, i) => (
                <Row className={'mt-1'} key={i}>
                   <Col xs={9} className='d-flex align-items-center'>
