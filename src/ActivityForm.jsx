@@ -7,7 +7,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 
 export default function ActivityForm({ addActivity }) {
    const [name, setName] = useState('');
-   const [time, setTime] = useState(5);
+   const [time, setTime] = useState('');
    const nameRef = useRef(null);
 
    const handleSubmit = e => {
