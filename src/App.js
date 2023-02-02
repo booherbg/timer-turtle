@@ -1,24 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
-
+import { useState, useEffect, useRef } from 'react';
+import ActivityForm from './ActivityForm';
+import Activities from './Activities';
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Container } from 'react-bootstrap';
 function App() {
+  const [activities, setActivities] = useState([]);
+  const [running, setRunning] = useState(false);
+
+  const addActivity = (name, time) => {
+    setActivities([...activities, {name, time, current: time}])
+  }
+
+  // runs every second to decrease the first active activity by 1 second
+  const tick = () => {
+    if (running && activities.length > 0) {
+      const firstActivity = activities.find(a => a.current > 0);
+      if (firstActivity) {
+        firstActivity.current -= 1;
+        setActivities([...activities])
+      }
+    }
+  }
+
+  useEffect(() => {
+    const interval = setInterval(() => tick(), 1000);
+    return () => clearInterval(interval);
+  })
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container className='p-3 rounded mt-3'>
+      <h1 className='text-center'>🐢 Timer Turtle 🐢</h1>
+      <ActivityForm addActivity={addActivity} />
+      <hr/>
+      <Activities activities={activities} setRunning={setRunning} running={running} />
+    </Container>
   );
 }
 
