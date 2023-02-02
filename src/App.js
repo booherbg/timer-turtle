@@ -17,7 +17,7 @@ function App() {
     if (running && activities.length > 0) {
       const firstActivity = activities.find(a => a.current > 0);
       if (firstActivity) {
-        firstActivity.current -= 1;
+        firstActivity.current -= .1;
         setActivities([...activities])
       }
     }
@@ -28,7 +28,7 @@ function App() {
   }
 
   useEffect(() => {
-    const interval = setInterval(() => tick(), 1000);
+    const interval = setInterval(() => tick(), 100);
     return () => clearInterval(interval);
   })
   return (
