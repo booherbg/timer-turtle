@@ -23,6 +23,10 @@ function App() {
     }
   }
 
+  const resetActivities = () => {
+    setActivities(activities.map(activity => ({...activity, current: activity.time})));
+  }
+
   useEffect(() => {
     const interval = setInterval(() => tick(), 1000);
     return () => clearInterval(interval);
@@ -32,7 +36,12 @@ function App() {
       <h1 className='text-center'>🐢 Timer Turtle 🐢</h1>
       <ActivityForm addActivity={addActivity} />
       <hr/>
-      <Activities activities={activities} setRunning={setRunning} running={running} />
+      <Activities 
+        activities={activities} 
+        setRunning={setRunning} 
+        running={running} 
+        resetActivities={resetActivities} 
+      />
     </Container>
   );
 }
