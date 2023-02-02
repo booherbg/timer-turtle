@@ -1,5 +1,5 @@
 import './App.css';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import ActivityForm from './ActivityForm';
 import Activities from './Activities';
 import "bootstrap/dist/css/bootstrap.min.css";
