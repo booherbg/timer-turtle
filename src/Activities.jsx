@@ -3,6 +3,7 @@ import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 import { Alert } from 'react-bootstrap';
+import NoSleep from 'nosleep.js';
 
 export default function Activities({ activities, setRunning, running, resetActivities }) {
    const [relative, setRelative] = useState(true);
@@ -13,7 +14,10 @@ export default function Activities({ activities, setRunning, running, resetActiv
          <input type="checkbox" checked={relative} onChange={() => setRelative(!relative)} /> Use Relative Width
          <div className="d-flex justify-content-between mb-3 mt-1">
             <div>
-               <Button className='mr-auto' variant={running ? 'warning' : 'success'} onClick={() => setRunning(!running)}>
+               <Button className='mr-auto' variant={running ? 'warning' : 'success'} onClick={() => {
+                  setRunning(!running);
+                  running ? NoSleep.disable() : NoSleep.enable();
+               }}>
                   {running ? 'Pause Timer' : 'Start Timer'}
                </Button>
                <br/>
